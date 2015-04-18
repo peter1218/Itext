@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFDocumentGeneration", "PDFDocumentGeneration\PDFDocumentGeneration.csproj", "{AC1AC985-AEA2-426E-8FC7-ACDC9668920E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocuSignDigitalSignature", "DocuSignDigitalSignature\DocuSignDigitalSignature.csproj", "{6B52B34F-5EE5-4B01-AC2B-4FD6D1D3C841}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC1AC985-AEA2-426E-8FC7-ACDC9668920E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC1AC985-AEA2-426E-8FC7-ACDC9668920E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC1AC985-AEA2-426E-8FC7-ACDC9668920E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC1AC985-AEA2-426E-8FC7-ACDC9668920E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B52B34F-5EE5-4B01-AC2B-4FD6D1D3C841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B52B34F-5EE5-4B01-AC2B-4FD6D1D3C841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B52B34F-5EE5-4B01-AC2B-4FD6D1D3C841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B52B34F-5EE5-4B01-AC2B-4FD6D1D3C841}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

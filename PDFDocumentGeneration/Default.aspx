@@ -6,6 +6,7 @@
         <h1>ASP.NET</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
         <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a><asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="debit" />
         </p>
     </div>
 

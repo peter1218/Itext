@@ -13,11 +13,11 @@ namespace PDFDocumentGeneration.DirectDebitRequestPDFGeneration
 {
     public class DirectDebitRequest : ItextAgreementBase
     {
-
+       
 
         PdfPTable DirectDebitServiceAgreementTable;
         PdfPTable LegalAdviceTable;
-
+        PdfPTable DirectDebitServiceAgreementTablePartTwo;
         Chunk chunk;
         PdfPTable DirectDebitRequestTable;// table used to add how much borrow and annual percentage rates
 
@@ -40,6 +40,7 @@ namespace PDFDocumentGeneration.DirectDebitRequestPDFGeneration
 
         public void GetPdf()
         {
+            generatDirectDebitServiceAgreementTablePartTwo();
             generateDirectDebitServiceAgreementTable();
             generateDirectDebitRequest();
 
@@ -69,6 +70,7 @@ namespace PDFDocumentGeneration.DirectDebitRequestPDFGeneration
             debitDocument.Add(DirectDebitRequestTable);
             debitDocument.NewPage();
             debitDocument.Add(DirectDebitServiceAgreementTable);
+            debitDocument.Add(DirectDebitServiceAgreementTablePartTwo);
             //debitDocument.Add(BorrowerPleaseNoteTable);
 
             //debitDocument.Add(LoanAgreementTitle);
@@ -373,30 +375,133 @@ This debit or charge will be made through the Bulk Electronic Clearing System (B
             pCell.AddElement(paragraph);
             DirectDebitServiceAgreementTable.AddCell(pCell);
 
-            chunk=getChunk("1. Debiting your accounts",font10Bold);
-            pCell=getCell();
+//            chunk=getChunk("1. Debiting your accounts",font10Bold);
+//            pCell=getCell();
+//            pCell.AddElement(chunk);
+//            DirectDebitServiceAgreementTable.AddCell(pCell);
+
+//            pCell=getCell();
+
+
+
+//            pCell.AddElement(new Paragraph(@"
+//1.1      By signing a Direct Debit Request or by providing us with a valid instruction, you
+//         have authorised us to arrange for funds to be debited from your account. You should
+//         refer to the Direct Debit Request and this agreement for the terms of the
+//         arrangement between us and you.
+//1.2      We will only arrange for funds to be debited from your account as authorised in the
+//         Direct Debit Request.
+//         or
+//         We will only arrange for funds to be debited from your account if we have sent to the
+//         address nominated by you in the Direct Debit Request, a billing advice which specifies
+//         the amount payable by you to us and when it is due.
+//1.3      If the debit day falls on a day that is not a banking day, we may direct your financial
+//         institution to debit your account on the following banking day. If you are unsure about
+//         which day your account has or will be debited you should ask your financial
+//         institution.",font10));
+
+//            DirectDebitServiceAgreementTable.AddCell(pCell);
+        }
+        public void generatDirectDebitServiceAgreementTablePartTwo()
+        {
+            DirectDebitServiceAgreementTablePartTwo = new PdfPTable(3);
+
+
+
+            DirectDebitServiceAgreementTablePartTwo.TotalWidth = intTableWidth;
+            DirectDebitServiceAgreementTablePartTwo.LockedWidth = true;
+            float[] widths = new float[] { 24f, 8f,68f };
+         
+            DirectDebitServiceAgreementTablePartTwo.SetWidths(widths);
+
+            chunk = getChunk("1. Debiting your accounts", font10Bold);
+                     pCell=getCell();
+                     pCell.Rowspan = 3;
+                     pCell.AddElement(chunk);
+                   DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+
+                   pCell = getCell();
+                   pCell.AddElement(new Chunk("1.1", font10));
+                   DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+                   pCell = getCell();
+            pCell.AddElement(new Paragraph(@"By signing a Direct Debit Request or by providing us with a valid instruction, you have authorised us to arrange for funds to be debited from your account. You should refer to the Direct Debit Request and this agreement for the terms of the arrangement between us and you.",font10     ));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+
+            pCell = getCell();
+            pCell.AddElement(new Chunk("1.2", font10));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+            pCell = getCell();
+            pCell.AddElement(new Paragraph(@"We will only arrange for funds to be debited from your account as authorised in the Direct Debit Request.", font10));
+            pCell.AddElement(new Paragraph("or", font10Bold));
+            pCell.AddElement(new Paragraph(@"We will only arrange for funds to be debited from your account if we have sent to the address nominated by you in the Direct Debit Request, a billing advice which specifies the amount payable by you to us and when it is due.",font10         ));
+           
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+
+            pCell = getCell();
+            pCell.AddElement(new Paragraph(@"1.3", font10));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+            pCell = getCell();
+            pCell.AddElement(new Paragraph(@"If the debit day falls on a day that is not a banking day, we may direct your financial institution to debit your account on the following banking day. If you are unsure about which day your account has or will be debited you should ask your financial institution.", font10));
+
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+
+
+
+
+
+
+
+            chunk = getChunk("2. Amendments by us", font10Bold);
+            pCell = getCell();
+            //pCell.Rowspan = 3;
             pCell.AddElement(chunk);
-            DirectDebitServiceAgreementTable.AddCell(pCell);
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
 
-            pCell=getCell();
+            pCell = getCell();
+            pCell.AddElement(new Chunk("2.1", font10));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+            pCell = getCell();
+            paragraph = para();
+            paragraph.Add(new Chunk("We may vary any details of this agreement or a Direct Debit Request at any time by giving you at least fourteen ", font10));
+            paragraph.Add(new Chunk("(14) days ", font10Bold));
+            paragraph.Add(new Chunk("written notice.", font10));
+            pCell.AddElement(paragraph  );
 
-            pCell.AddElement(new Paragraph(@"
-1.1      By signing a Direct Debit Request or by providing us with a valid instruction, you
-         have authorised us to arrange for funds to be debited from your account. You should
-         refer to the Direct Debit Request and this agreement for the terms of the
-         arrangement between us and you.
-1.2      We will only arrange for funds to be debited from your account as authorised in the
-         Direct Debit Request.
-         or
-         We will only arrange for funds to be debited from your account if we have sent to the
-         address nominated by you in the Direct Debit Request, a billing advice which specifies
-         the amount payable by you to us and when it is due.
-1.3      If the debit day falls on a day that is not a banking day, we may direct your financial
-         institution to debit your account on the following banking day. If you are unsure about
-         which day your account has or will be debited you should ask your financial
-         institution.",font10));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
 
-            DirectDebitServiceAgreementTable.AddCell(pCell);
+
+
+
+
+
+
+            chunk = getChunk("3. Amendments by you", font10Bold);
+            pCell = getCell();
+            //pCell.Rowspan = 3;
+            pCell.AddElement(chunk);
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+
+            pCell = getCell();
+            pCell.AddElement(new Chunk("", font10));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
+            pCell = getCell();
+            paragraph = para();
+            paragraph.Add(new Chunk("You may change, stop or defer a debit payment, or terminate this agreement by providing us with at least", font10));
+            paragraph.Add(new Chunk(" 5 days ", font10Bold));
+            paragraph.Add(new Chunk("notification by writing to:", font10));
+            paragraph.SpacingAfter = 10;
+            pCell.AddElement(paragraph);
+
+            pCell.AddElement(new Chunk("Po Box 1962, North Sydney NSW 2059", font10Bold));
+            pCell.AddElement(new Chunk("or", font10Bold));
+            paragraph = para();
+            paragraph.Add(new Chunk("by telephoning us on", font10));
+            paragraph.Add(new Chunk(" 02 8116 1010 ", font10Bold));
+            paragraph.Add(new Chunk("during business hours;",font10));
+            pCell.AddElement(paragraph);
+            pCell.AddElement(new Chunk("or", font10Bold));
+            pCell.AddElement(new Chunk("arranging it through your own financial institution, which is required to act promptly on your instructions.", font10));
+            DirectDebitServiceAgreementTablePartTwo.AddCell(pCell);
         }
         #region  Header And Footer Helper Section
 

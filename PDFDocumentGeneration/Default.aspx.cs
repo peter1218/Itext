@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using PDFDocumentGeneration;
 using PDFDocumentGeneration.LoanAgreement;
+using PDFDocumentGeneration.DirectDebitRequestPDFGeneration;
 namespace PDFDocumentGeneration
 {
     public partial class _Default : Page
@@ -19,6 +20,12 @@ namespace PDFDocumentGeneration
         {
           LoanAgreementPdfGenerator loan=new LoanAgreementPdfGenerator();
           loan.GetPdf();
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            DirectDebitRequest debit = new DirectDebitRequest();
+            debit.GetPdf();
         }
     }
 }
